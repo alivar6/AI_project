@@ -2,7 +2,7 @@ import numpy as np
 import math
 def feature(X_train):
     f=np.zeros((len(X_train),56+56+1))
-    for i in range(len(X_train)):
+    for i in range(1000):
         for j in range(28):
             count = 0
             for z in range(len(X_train[0])):

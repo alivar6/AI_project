@@ -1,45 +1,57 @@
 import numpy as np
 import math
-def feature(X_train):
-    f=np.zeros((len(X_train),56+56+1))
-    for i in range(len(X_train)):
+def feature(X_train,lenth):
+    f=np.zeros((lenth,56+56+56))
+    for i in range(lenth):
         for j in range(28):
             count = 0
-            for z in range(len(X_train[0])):
-                if((z//28) == j and X_train[i][z] > 60):
+            for k in range(28):
+                if(( X_train[i][j*28 +k] > 40)):
                     count+=1
-            f[i][j] = count
-            med = 0;
-            for z in range(len(X_train[0])):
-                if ((z // 28) == j and X_train[i][z] > 60):
+
+            f[i][j] = count*20
+            med = 0
+            for k in range(28):
+                if ((X_train[i][j * 28 + k] > 40)):
                     med+=1
                 if(med > (count/2)):
-                    f[i][j+28] = z%28
-                    break
+                    f[i][j+28] = k*20
+                    break;
+
             count = 0
-            for z in range(len(X_train[0])):
-                if ((z % 28) == j and X_train[i][z] > 60):
+
+            for k in range(28):
+                if ( X_train[i][j+28* k] > 40):
                     count += 1
-            f[i][j+56] = count
+
+            f[i][j+56] = count*20
             med = 0;
-            for z in range(len(X_train[0])):
-                if ((z % 28) == j and X_train[i][z] > 60):
+
+            for k in range(28):
+                if ( X_train[i][j+28* k] > 40):
                     med += 1
                 if (med > (count / 2)):
-                    f[i][j + 56+28 ] = z // 28
+                    f[i][j + 56+28 ] = k*20
                     break
-        count = 0;
-        for j in range(len(X_train[0])):
-            if(j%28 <14 and X_train[i][j] > 60):
-                count +=1
-            if (j % 28 >= 14 and X_train[i][j] > 60):
-                count -=1
-        if(count < 0):
-            count*=-1
-        if(count == 0):
-            count =0.01
-        f[i][56+56]=count
 
-    return f*10
+            med = 0
+
+            for k in range(28):
+                if ( k<27 and X_train[i][28*k+j] <40 and X_train[i][28*k+28+j] > 40):
+                    med += 1
+                if (k < 27 and X_train[i][28 * k + j] > 40 and X_train[i][28 * k + 28 + j] < 40):
+                    med += 1
+            f[i][j + 112] = med*200
+            med = 0
+            for k in range(28):
+                if ( k<27 and  X_train[i][j*28 + k]< 40 and X_train[i][j*28 + k+1 ] > 40):
+                    med += 1
+                if (k < 27 and X_train[i][j * 28 + k] > 40 and X_train[i][j * 28 + k + 1] < 40):
+                    med += 1
+            f[i][j + 112 + 28] = med * 200
+    x1 = np.zeros((lenth, 28 * 28 + 56 * 3))
+    for i in range(lenth):
+        x1[i] = (np.append(f[i],X_train[i]))/200
+    return x1
 
 

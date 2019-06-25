@@ -34,7 +34,7 @@ print((X_train[0]))
 #np.save('save_featur',X_train)
 #np.save('save_test',X_test)
 w = [[1 for i in range(len(X_train[0]))] for j in range(10)]
-for z in range(50):
+for z in range(25):
     for i in range(60000):
         maxim, maxIndex = (np.dot(w[5], X_train[i])  + b[5]), 5
         for j in range(len(w)):
@@ -51,4 +51,4 @@ for z in range(50):
             w[int(y_train[i])] += X_train[i]*tav
             b[int(y_train[i])] +=1*tav
     print(z)
-    print(test.test_data(w,b,X_test,y_test,10000))
+print(test.test_data(w,b,X_test,y_test,10000))

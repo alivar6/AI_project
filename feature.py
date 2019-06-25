@@ -51,7 +51,7 @@ def feature(X_train,lenth):
             f[i][j + 112 + 28] = med * 200
     x1 = np.zeros((lenth, 28 * 28 + 56 * 3))
     for i in range(lenth):
-        x1[i] = (np.append(f[i],X_train[i]))/200
+        x1[i] = (np.append(f[i],X_train[i]))
     return x1
 
 

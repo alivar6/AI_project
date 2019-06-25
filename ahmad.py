@@ -12,15 +12,17 @@ def extract_feature_vector():
     #T_train = feature.feature(Z_train, 10000) #feature extract
     #print(T_train[0])
     #T_test = feature.feature(Z_test, len(Z_test)) #feature extract
-    #T_train = np.load("aa.npy")
-    #T_test = np .load("bb.npy")
+    #X_train = np.load("aa.npy")
+    #X_test = np .load("bb.npy")
     #np.save("22",X_train)
     #np.save("33",X_test)
-    #X_train=np.load('22.npy')
-    #X_test=np.load('33.npy')
-    X_train = feature.feature(Z_train,60000)
-    X_test=feature.feature(Z_test,10000)
-    print(len(X_train[0]))
+    X_train=np.load('feature_large.npy')
+    X_test=np.load('test_large.npy')
+    #X_train = feature.feature(Z_train,60000)
+    #X_test=feature.feature(Z_test,10000)
+    #np.save("feature_large",X_train)
+    #np.save("test_large",X_test)
+    print(np.dot(X_train[0],X_train[0]))
     print(X_train[0])
     return X_train,y_train,X_test,y_test
 

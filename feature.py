@@ -64,14 +64,12 @@ def extract_feature_vector():
     #X_test = np .load("bb.npy")
     #np.save("22",X_train)
     #np.save("33",X_test)
-    #X_train=np.load('feature_large.npy')
-    #X_test=np.load('test_large.npy')
+    X_train=np.load('feature_law.npy')
+    X_test=np.load('test_law.npy')
     #X_train = feature.feature(Z_train,60000)
     #X_test=feature.feature(Z_test,10000)
     #np.save("feature_large",X_train)
     #np.save("test_large",X_test)
-    X_train = Z_train
-    X_test=Z_test
     print(np.dot(X_train[0],X_train[0]))
     print(X_train[0])
     return X_train,y_train,X_test,y_test

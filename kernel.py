@@ -8,8 +8,8 @@ def RBF_Kernel(x , y , gamma):
     power = -1 * gamma * pow(dist , 2)
     return np.exp(power)
 
-trainLength = 500
-testlenght =500
+trainLength = 10000
+testlenght =5000
 a = time.time()
 alphas = [[0 for i in range(trainLength)] for j in range(10)]
 kernels = [[0 for i in range(trainLength)] for j in range(trainLength)]
@@ -18,24 +18,24 @@ kernels_test = [[0 for i in range(trainLength)] for j in range(testlenght)]
 
 for i  in range(trainLength):
     for j in range(trainLength):
-        kernels[i][j] = RBF_Kernel(data[i],data[j],0.000001)
+        kernels[i][j] = RBF_Kernel(data[i],data[j],0.008)
 
 
 for i  in range(testlenght):
     for j in range(trainLength):
-        kernels_test[i][j] = RBF_Kernel(testData[i],data[j],0.000001)
+        kernels_test[i][j] = RBF_Kernel(testData[i],data[j],0.008)
 print(kernels[0][100])
 
 
 maxIndex = 0
 count = 0
-for z in range(5):
+for z in range(9):
     count = 0
     for i in range(trainLength):
 
 
 
-        maxim = - (10**30)
+        maxim = - (10**7)
         current = 0
         for k in range(10):
 
@@ -64,7 +64,7 @@ correct = 0
 
 for i in range(testlenght): #classify test datas
 
-    maxim = - (10 ** 30)
+    maxim = - (10 ** 7)
     maxIndex = 0
     for k in range(10):
         current = 0

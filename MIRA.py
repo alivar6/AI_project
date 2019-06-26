@@ -14,6 +14,7 @@ def extract_feature_vector():
     X_train=np.load('feature_law.npy')
     X_test=np.load('test_law.npy')
     #print(np.dot(X_train[0],X_train[0]))
+    #print(X_train[0])
     return X_train,y_train,X_test,y_test
 
 

@@ -54,12 +54,23 @@ def feature(X_train,lenth):
     for i in range(lenth):
         x1[i] = (np.append(f[i],X_train[i]))
     return x1
+
+
 def extract_feature_vector():
     Z_train, y_train = mnist_reader.load_mnist("", 'train') #extract train data
     Z_test, y_test = mnist_reader.load_mnist("", 't10k') #extract test data
     X_train=np.load('feature_law.npy')
     X_test=np.load('test_law.npy')
     return X_train,y_train,X_test,y_test
+
+
+def extract_feature_low(Z_train):
+    X_train = np.zeros((len(Z_train),len(Z_train[0])))
+    for i in range(len(X_train)):
+        for j in range(len(X_train[0])):
+            X_train[i][j] = Z_train[i][j]/200;
+    return X_train
+
 
 
 

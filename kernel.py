@@ -15,7 +15,7 @@ alphas = [[0 for i in range(trainLength)] for j in range(10)]
 kernels = [[0 for i in range(trainLength)] for j in range(trainLength)]
 data,labels,testData,testlabels = feature.extract_feature_vector()
 kernels_test = [[0 for i in range(trainLength)] for j in range(testlenght)]
-
+''''
 for i  in range(trainLength):
     for j in range(trainLength):
         kernels[i][j] = RBF_Kernel(data[i],data[j],0.008)
@@ -30,12 +30,13 @@ for i  in range(testlenght):
     if (i % 500 == 0):
         print("test :")
         print(i)
-print(kernels[0][100])
-np.save("train_kernel",kernels)
-np.save("test_kernel",kernels_test)
-#kernels = np.load("train_kernel")
-#kernels_test = np.load("test_kernel")
-
+'''
+#print(kernels[0][100])
+#np.save("train_kernel",kernels)
+#np.save("test_kernel",kernels_test)
+kernels = np.load("train_kernel.npy")
+kernels_test = np.load("test_kernel.npy")
+print("asd")
 maxIndex = 0
 count = 0
 for z in range(10):

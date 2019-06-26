@@ -14,14 +14,12 @@ def extract_feature_vector():
     X_train=np.load('feature_law.npy')
     X_test=np.load('test_law.npy')
     print(np.dot(X_train[0],X_train[0]))
-    print(X_train[0])
     return X_train,y_train,X_test,y_test
 
 
 b = [1 for i in range(10)]
 B_max=[1 for i in range(10)]
 X_train,y_train,X_test,y_test = extract_feature_vector()
-print((X_train[0]))
 #np.save('save_featur',X_train)
 #np.save('save_test',X_test)
 w = [[1 for i in range(len(X_train[0]))] for j in range(10)]

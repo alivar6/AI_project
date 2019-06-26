@@ -19,17 +19,26 @@ kernels_test = [[0 for i in range(trainLength)] for j in range(testlenght)]
 for i  in range(trainLength):
     for j in range(trainLength):
         kernels[i][j] = RBF_Kernel(data[i],data[j],0.008)
+    if (i % 500 == 0):
+        print("train :")
+        print(i)
 
 
 for i  in range(testlenght):
     for j in range(trainLength):
         kernels_test[i][j] = RBF_Kernel(testData[i],data[j],0.008)
+    if (i % 500 == 0):
+        print("test :")
+        print(i)
 print(kernels[0][100])
-
+np.save("train_kernel",kernels)
+np.save("test_kernel",kernels_test)
+#kernels = np.load("train_kernel")
+#kernels_test = np.load("test_kernel")
 
 maxIndex = 0
 count = 0
-for z in range(9):
+for z in range(10):
     count = 0
     for i in range(trainLength):
 
@@ -56,7 +65,7 @@ for z in range(9):
             alphas[maxIndex][i] -= 1
             alphas[int(labels[i])][i] += 1
     print(z)
-    print(count/10)
+    print(count/trainLength * 100)
 
 
 
